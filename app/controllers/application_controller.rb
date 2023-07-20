@@ -15,10 +15,11 @@ class ApplicationController < ActionController::Base
   after_action do
     directives = [
       "default-src 'self'",
-      "connect-src 'self' https://www.google-analytics.com",
-      "img-src 'self' https://www.google-analytics.com",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-      "style-src 'self' 'unsafe-inline'"
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
+      "img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com",
+      "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://tagmanager.google.com",
+      "style-src 'self' 'unsafe-inline' https://tagmanager.google.com https://fonts.googleapis.com https://www.googletagmanager.com",
+      "font-src 'self' 'unsafe-inline' https://fonts.gstatic.com data:"
     ]
 
     response.headers["Content-Security-Policy"] = directives.join("; ")
