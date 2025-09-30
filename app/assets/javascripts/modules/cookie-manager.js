@@ -175,14 +175,21 @@ class CookieManager {
 
     document.cookie = buildCookie(this.cookieName, btoa(json));
     document.cookie = buildCookie(this.alternateCookieName, json);
+    
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'cookie_pref_set'
+    })
 
-    const gtm = document.getElementById('google-tag-manager');
+    //const gtm = document.getElementById('google-tag-manager');
 
+    /*
     if (this.allowAnalyticsCookies && !gtm) {
       this.writeAnalyticsScriptTag();
     } else if (gtm) {
       gtm.remove();
     }
+    */
   }
 
   closeCookiePreferences() {
@@ -193,14 +200,17 @@ class CookieManager {
     }
   }
 
+  /*
   writeAnalyticsScriptTag() {
     const now = new Date();
 
+    
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       'gtm.start': now.getTime(),
       'event': 'gtm.js'
     })
+    
 
     const googleTag = document.createElement('script');
     googleTag.id = 'google-tag-manager';
@@ -227,6 +237,7 @@ class CookieManager {
   get googleTagManagerId() {
     return document.querySelector('meta[name=google-tag-manager-id]').content;
   }
+  */
 }
 
 window.PETS = window.PETS || {};

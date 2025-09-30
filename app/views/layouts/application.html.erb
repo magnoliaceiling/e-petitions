@@ -27,6 +27,7 @@
     <% if Site.enable_analytics? %>
       <%= tag.meta name: "csp-nonce", content: content_security_policy_nonce %>
       <%= tag.meta name: "google-tag-manager-id", content: Site.google_tag_manager_id %>
+      <%= render 'application/gtm_head' %>
     <% end %>
   </head>
   <body>
