@@ -25,6 +25,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   }
 
+  const gaEvents = document.querySelectorAll('[data-ga-event]');
+
+  if (gaEvents.length > 0) {
+    window.dataLayer = window.dataLayer || [];
+
+    for (const element of gaEvents) {
+      window.dataLayer.push({ 'event': element.dataset.gaEvent });
+    }
+  }
+
   const navigationMenus = document.querySelectorAll('[data-module=navigation-menu]');
 
   for (const navigationMenu of navigationMenus) {
