@@ -23,4 +23,8 @@
       <li>allow up to 24 hours for the email to arrive</li>
     </ul>
   </div>
+
+  <% if flash[:signature_created] %>
+    <div data-ga-event="signature_created" hidden></div>
+  <% end %>
 </div>
