@@ -25,6 +25,7 @@ class SignaturesController < PublicController
 
   def create
     if @signature.save
+      flash[:signature_created] = true
       redirect_to thank_you_url
     else
       respond_to do |format|
@@ -34,7 +35,9 @@ class SignaturesController < PublicController
   end
 
   def signed
-    unless @signature.seen_signed_confirmation_page?
+    @signature_validated = !@signature.seen_signed_confirmation_page?
+
+    if @signature_validated
       @signature.mark_seen_signed_confirmation_page!
     end
 
