@@ -38,4 +38,8 @@
       Up to 20 supporters can sign your petition at this point.
     </p>
   </div>
+
+  <% if flash[:petition_created] %>
+    <div data-ga-event="petition_created" hidden></div>
+  <% end %>
 </div>
