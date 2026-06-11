@@ -77,6 +77,7 @@ class PetitionsController < PublicController
 
   def create
     if @new_petition.save
+      flash[:petition_created] = true
       redirect_to thank_you_petitions_url
     else
       respond_to do |format|
